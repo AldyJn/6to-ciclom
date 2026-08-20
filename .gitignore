@@ -1,0 +1,43 @@
+# Resultados de compilacion
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Archivos de usuario de Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Resultados de pruebas y cobertura
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Rider / VS Code
+.idea/
+*.sln.iml
+.vscode/
+
+# Publicacion
+[Pp]ublish/
+*.publishsettings
+PublishScripts/
+
+# Varios
+*.cache
+*.tmp
+*.bak
+Thumbs.db
+desktop.ini
