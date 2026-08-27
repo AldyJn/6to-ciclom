@@ -1,0 +1,17 @@
+<Window x:Class="lab2.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Acceso" Height="400" Width="360"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="40">
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Lab 2" Style="{StaticResource Titulo}"/>
+            <TextBlock Text="Usuario" Style="{StaticResource Etiqueta}"/>
+            <TextBox x:Name="txtUsuario"/>
+            <TextBlock Text="Contraseña" Style="{StaticResource Etiqueta}"/>
+            <PasswordBox x:Name="txtPassword"/>
+            <Button Content="Ingresar" Click="Ingresar_Click" Margin="0,10,0,0"/>
+            <TextBlock x:Name="lblError" Foreground="#C0392B" FontSize="12" Margin="0,14,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Window>

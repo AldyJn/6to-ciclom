@@ -1,0 +1,69 @@
+<UserControl x:Class="lab2.Views.Reportes.ReporteIngresosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Reporte de Ingresos" Style="{StaticResource Titulo}"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Fecha inicio" Style="{StaticResource Etiqueta}"/>
+                <DatePicker x:Name="dpInicio" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Fecha fin" Style="{StaticResource Etiqueta}"/>
+                <DatePicker x:Name="dpFin" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="Placa" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtPlaca" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="6">
+                <TextBlock Text="Conductor" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtConductor" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="8">
+                <TextBlock Text="Producto" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtProducto" Margin="0"/>
+            </StackPanel>
+            <Button Grid.Column="10" Content="Buscar" VerticalAlignment="Bottom" Click="Buscar_Click"/>
+            <Button Grid.Column="12" Content="Limpiar" Style="{StaticResource BotonSecundario}" VerticalAlignment="Bottom" Click="Limpiar_Click"/>
+        </Grid>
+
+        <DataGrid Grid.Row="2" x:Name="grid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy HH:mm}" Width="*"/>
+                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}" Width="*"/>
+                <DataGridTextColumn Header="Turno" Binding="{Binding Turno}" Width="*"/>
+                <DataGridTextColumn Header="Conductor" Binding="{Binding Conductor}" Width="1.5*"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" Width="*"/>
+                <DataGridTextColumn Header="Peso" Binding="{Binding Peso, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="Transporte" Binding="{Binding Transporte}" Width="1.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="3" x:Name="lblResumen" Foreground="{StaticResource Suave}" FontSize="12" Margin="0,14,0,0"/>
+    </Grid>
+</UserControl>

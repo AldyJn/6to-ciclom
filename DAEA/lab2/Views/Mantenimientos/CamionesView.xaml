@@ -1,0 +1,47 @@
+<UserControl x:Class="lab2.Views.Mantenimientos.CamionesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Camiones" Style="{StaticResource Titulo}"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Placa" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtPlaca" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Marca" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtMarca" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="Transporte" Style="{StaticResource Etiqueta}"/>
+                <ComboBox x:Name="cboTransporte" Margin="0"/>
+            </StackPanel>
+            <Button Grid.Column="6" Content="Agregar" VerticalAlignment="Bottom" Click="Agregar_Click"/>
+        </Grid>
+
+        <DataGrid Grid.Row="2" x:Name="grid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}" Width="*"/>
+                <DataGridTextColumn Header="Marca" Binding="{Binding Marca}" Width="*"/>
+                <DataGridTextColumn Header="Transporte" Binding="{Binding Transporte}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

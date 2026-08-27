@@ -1,0 +1,47 @@
+<UserControl x:Class="lab2.Views.Mantenimientos.TransportistasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Transportistas" Style="{StaticResource Titulo}"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Nombre" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtNombre" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="RUC" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtRuc" Margin="0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="Teléfono" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtTelefono" Margin="0"/>
+            </StackPanel>
+            <Button Grid.Column="6" Content="Agregar" VerticalAlignment="Bottom" Click="Agregar_Click"/>
+        </Grid>
+
+        <DataGrid Grid.Row="2" x:Name="grid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
+                <DataGridTextColumn Header="RUC" Binding="{Binding Ruc}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
