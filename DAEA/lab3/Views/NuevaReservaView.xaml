@@ -1,0 +1,23 @@
+<UserControl x:Class="lab3.Views.NuevaReservaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Width="420" HorizontalAlignment="Left">
+        <TextBlock Text="Nueva Reserva" Style="{StaticResource Titulo}"/>
+
+        <TextBlock Text="AULA" Style="{StaticResource Etiqueta}"/>
+        <ComboBox ItemsSource="{Binding Aulas}" SelectedItem="{Binding Aula}" DisplayMemberPath="Nombre"/>
+
+        <TextBlock Text="FECHA" Style="{StaticResource Etiqueta}"/>
+        <DatePicker SelectedDate="{Binding Fecha}"/>
+
+        <TextBlock Text="HORA" Style="{StaticResource Etiqueta}"/>
+        <ComboBox ItemsSource="{Binding Horas}" SelectedItem="{Binding Hora}"/>
+
+        <TextBlock Text="MOTIVO" Style="{StaticResource Etiqueta}"/>
+        <TextBox Text="{Binding Motivo, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Content="Registrar" Command="{Binding GuardarCommand}" HorizontalAlignment="Left" Margin="0,6,0,0"/>
+
+        <TextBlock Text="{Binding Mensaje}" Margin="0,16,0,0" TextWrapping="Wrap" Foreground="{StaticResource Suave}"/>
+    </StackPanel>
+</UserControl>

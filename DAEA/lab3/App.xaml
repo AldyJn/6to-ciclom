@@ -1,0 +1,34 @@
+<Application x:Class="lab3.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:lab3.ViewModels"
+             xmlns:v="clr-namespace:lab3.Views"
+             StartupUri="Views/LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Estilos.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:AulasTablaViewModel}">
+                <v:AulasTablaView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AulasObjetosViewModel}">
+                <v:AulasObjetosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReservasTablaViewModel}">
+                <v:ReservasTablaView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReservasObjetosViewModel}">
+                <v:ReservasObjetosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:NuevaReservaViewModel}">
+                <v:NuevaReservaView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

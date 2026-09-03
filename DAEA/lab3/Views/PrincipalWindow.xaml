@@ -1,0 +1,40 @@
+<Window x:Class="lab3.Views.PrincipalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Reservas de Aulas" Height="640" Width="1160"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="{StaticResource Panel}"
+                BorderBrush="{StaticResource Linea}" BorderThickness="0,0,1,0">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="20,24,20,4">
+                    <TextBlock Text="Reservas" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Usuario}" Foreground="{StaticResource Suave}" FontSize="12" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="AULAS" Style="{StaticResource Seccion}"/>
+                    <RadioButton Style="{StaticResource NavItem}" GroupName="nav" IsChecked="True"
+                                 Content="Aulas (DataTable)" Command="{Binding AulasTablaCommand}"/>
+                    <RadioButton Style="{StaticResource NavItem}" GroupName="nav"
+                                 Content="Aulas (Objetos)" Command="{Binding AulasObjetosCommand}"/>
+
+                    <TextBlock Text="RESERVAS" Style="{StaticResource Seccion}"/>
+                    <RadioButton Style="{StaticResource NavItem}" GroupName="nav"
+                                 Content="Reservas (DataTable)" Command="{Binding ReservasTablaCommand}"/>
+                    <RadioButton Style="{StaticResource NavItem}" GroupName="nav"
+                                 Content="Reservas (Objetos)" Command="{Binding ReservasObjetosCommand}"/>
+                    <RadioButton Style="{StaticResource NavItem}" GroupName="nav"
+                                 Content="Nueva Reserva" Command="{Binding NuevaReservaCommand}"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <ContentControl Grid.Column="1" Content="{Binding Vista}" Margin="40,30"/>
+    </Grid>
+</Window>
