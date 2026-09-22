@@ -1,0 +1,99 @@
+<UserControl x:Class="lab6.Views.ProductosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="340"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Mantenimiento de Productos"
+                   Style="{StaticResource Titulo}"/>
+
+        <DataGrid Grid.Row="1" Grid.Column="0" Margin="0,0,24,0"
+                  ItemsSource="{Binding Productos}"
+                  SelectedItem="{Binding Seleccionado}"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ProductoID}" Width="45"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" Width="*" MinWidth="170"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="125"/>
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}" Width="155"/>
+                <DataGridTextColumn Header="Presentacion" Binding="{Binding CantidadPorUnidad}" Width="90"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding PrecioUnidad, StringFormat=N2}" Width="70"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding UnidadesEnExistencia}" Width="55"/>
+                <DataGridCheckBoxColumn Header="Activo" Binding="{Binding Activo}" Width="55"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource Formulario}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="{Binding Titulo}" Style="{StaticResource Subtitulo}"/>
+
+                    <TextBlock Text="NOMBRE" Style="{StaticResource Etiqueta}"/>
+                    <TextBox Text="{Binding Editado.NombreProducto, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <TextBlock Text="CATEGORIA" Style="{StaticResource Etiqueta}"/>
+                    <ComboBox ItemsSource="{Binding Categorias}"
+                              DisplayMemberPath="NombreCategoria"
+                              SelectedValuePath="CategoriaID"
+                              SelectedValue="{Binding Editado.CategoriaID}"/>
+
+                    <TextBlock Text="PROVEEDOR" Style="{StaticResource Etiqueta}"/>
+                    <ComboBox ItemsSource="{Binding Proveedores}"
+                              DisplayMemberPath="CompaniaNombre"
+                              SelectedValuePath="ProveedorID"
+                              SelectedValue="{Binding Editado.ProveedorID}"/>
+
+                    <TextBlock Text="CANTIDAD POR UNIDAD" Style="{StaticResource Etiqueta}"/>
+                    <TextBox Text="{Binding Editado.CantidadPorUnidad}"/>
+
+                    <TextBlock Text="PRECIO UNITARIO" Style="{StaticResource Etiqueta}"/>
+                    <TextBox Text="{Binding Editado.PrecioUnidad, StringFormat=N2}"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                            <TextBlock Text="EXISTENCIA" Style="{StaticResource Etiqueta}"/>
+                            <TextBox Text="{Binding Editado.UnidadesEnExistencia}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                            <TextBlock Text="EN PEDIDO" Style="{StaticResource Etiqueta}"/>
+                            <TextBox Text="{Binding Editado.UnidadesEnPedido}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="REORDEN" Style="{StaticResource Etiqueta}"/>
+                            <TextBox Text="{Binding Editado.NivelDeReorden}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <CheckBox Content="Descontinuado" IsChecked="{Binding Editado.Descontinuado}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Guardar" Command="{Binding GuardarCommand}" Margin="0,0,8,0"/>
+                        <Button Content="Nuevo" Command="{Binding NuevoCommand}"
+                                Style="{StaticResource BotonSecundario}" Margin="0,0,8,0"/>
+                        <Button Content="Eliminar" Command="{Binding EliminarCommand}"
+                                Style="{StaticResource BotonPeligro}"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Mensaje}"
+                   Style="{StaticResource Mensaje}" Margin="0,16,0,0"/>
+    </Grid>
+</UserControl>

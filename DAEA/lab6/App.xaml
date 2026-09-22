@@ -1,0 +1,34 @@
+<Application x:Class="lab6.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:lab6.ViewModels"
+             xmlns:v="clr-namespace:lab6.Views"
+             StartupUri="Views/PrincipalWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Estilos.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:ProductosViewModel}">
+                <v:ProductosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:CategoriasViewModel}">
+                <v:CategoriasView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ProveedoresViewModel}">
+                <v:ProveedoresView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:PedidosViewModel}">
+                <v:PedidosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReportePedidosViewModel}">
+                <v:ReportePedidosView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
