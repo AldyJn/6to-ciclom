@@ -1,0 +1,51 @@
+<Application x:Class="Neptuno.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Acento" Color="#2B6CB0"/>
+            <SolidColorBrush x:Key="Borde" Color="#D0D7DE"/>
+
+            <Style TargetType="TextBlock" x:Key="Etiqueta">
+                <Setter Property="Margin" Value="0,6,8,2"/>
+                <Setter Property="Foreground" Value="#444"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+            <Style TargetType="TextBox">
+                <Setter Property="Padding" Value="5,4"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Borde}"/>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Padding" Value="5,4"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+            </Style>
+
+            <Style TargetType="DatePicker">
+                <Setter Property="Margin" Value="0,0,0,8"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="14,6"/>
+                <Setter Property="Margin" Value="0,0,8,0"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Borde}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Style>
+
+            <Style TargetType="DataGrid">
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+                <Setter Property="SelectionMode" Value="Single"/>
+                <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+                <Setter Property="RowHeaderWidth" Value="0"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Borde}"/>
+                <Setter Property="AlternatingRowBackground" Value="#F7F9FC"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
