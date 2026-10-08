@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center py-4">
+    <h1 class="display-5">Sistema de Biblioteca</h1>
+    <p class="lead">Gestione libros, socios y consulte los préstamos por rango de fechas.</p>
+    <div class="d-flex justify-content-center gap-2">
+        <a class="btn btn-primary" asp-controller="Libros" asp-action="Index">Libros</a>
+        <a class="btn btn-primary" asp-controller="Socios" asp-action="Index">Socios</a>
+        <a class="btn btn-outline-primary" asp-controller="Prestamos" asp-action="Reporte">Reporte de préstamos</a>
+    </div>
+</div>

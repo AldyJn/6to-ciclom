@@ -1,0 +1,20 @@
+@model Libro
+@{
+    ViewData["Title"] = "Detalle del libro";
+}
+
+<h1 class="h3 mb-3">Detalle del libro</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Titulo)</dt>
+    <dd class="col-sm-9">@Model.Titulo</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.ISBN)</dt>
+    <dd class="col-sm-9">@Model.ISBN</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.AutorNombre)</dt>
+    <dd class="col-sm-9">@Model.AutorNombre</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Ejemplares)</dt>
+    <dd class="col-sm-9">@Model.Ejemplares</dd>
+</dl>
+
+<a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.LibroId">Editar</a>
+<a class="btn btn-outline-secondary" asp-action="Index">Volver al listado</a>

@@ -1,0 +1,21 @@
+@model Libro
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Nuevo libro";
+}
+
+<h1 class="h3 mb-3">Nuevo libro</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <partial name="_FormularioLibro" model="Model" />
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
