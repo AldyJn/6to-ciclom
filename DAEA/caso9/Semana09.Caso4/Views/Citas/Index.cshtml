@@ -1,0 +1,38 @@
+@model List<Cita>
+@{ ViewData["Title"] = "Citas registradas"; }
+
+<h1>Citas registradas</h1>
+
+@if (TempData["Mensaje"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<p>
+    <a asp-action="CreateHelpers" class="btn btn-outline-primary">Nueva cita (HTML Helpers)</a>
+    <a asp-action="CreateTagHelpers" class="btn btn-outline-success">Nueva cita (Tag Helpers)</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th><th>Paciente</th><th>Correo</th><th>Especialidad</th><th>Fecha</th><th>1ª vez</th>
+            <th>Html.ActionLink</th><th>Tag Helper &lt;a&gt;</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Id</td>
+            <td>@c.Paciente</td>
+            <td>@c.Correo</td>
+            <td>@c.Especialidad</td>
+            <td>@c.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@(c.PrimeraVez ? "Sí" : "No")</td>
+            <td>@Html.ActionLink("Ver detalle", "Details", "Citas", new { id = c.Id }, new { @class = "btn btn-sm btn-primary" })</td>
+            <td><a asp-controller="Citas" asp-action="Details" asp-route-id="@c.Id" class="btn btn-sm btn-success">Ver detalle</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

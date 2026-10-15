@@ -1,0 +1,39 @@
+@model Cita
+@{ ViewData["Title"] = "Reservar cita (HTML Helpers)"; }
+
+<h1>Reservar cita <small class="text-muted">— HTML Helpers</small></h1>
+
+@using (Html.BeginForm("Create", "Citas", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("vista", "CreateHelpers")
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Paciente, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Paciente, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Paciente, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Correo, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Correo, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Especialidad, new { @class = "form-label" })
+        @Html.DropDownListFor(m => m.Especialidad, (SelectList)ViewBag.Especialidades, "-- Seleccione --", new { @class = "form-select" })
+        @Html.ValidationMessageFor(m => m.Especialidad, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Fecha, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Fecha, "{0:yyyy-MM-ddTHH:mm}", new { @class = "form-control", type = "datetime-local" })
+        @Html.ValidationMessageFor(m => m.Fecha, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-check mb-3">
+        @Html.CheckBoxFor(m => m.PrimeraVez, new { @class = "form-check-input" })
+        @Html.LabelFor(m => m.PrimeraVez, new { @class = "form-check-label" })
+    </div>
+    <button type="submit" class="btn btn-primary">Reservar</button>
+    @Html.ActionLink("Volver al listado", "Index", "Citas", null, new { @class = "btn btn-link" })
+}
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

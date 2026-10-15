@@ -1,0 +1,39 @@
+@model Cita
+@{ ViewData["Title"] = "Reservar cita (Tag Helpers)"; }
+
+<h1>Reservar cita <small class="text-muted">— Tag Helpers</small></h1>
+
+<form asp-controller="Citas" asp-action="Create" method="post">
+    <input type="hidden" name="vista" value="CreateTagHelpers" />
+
+    <div class="mb-3">
+        <label asp-for="Paciente" class="form-label"></label>
+        <input asp-for="Paciente" class="form-control" />
+        <span asp-validation-for="Paciente" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Correo" class="form-label"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Especialidad" class="form-label"></label>
+        <select asp-for="Especialidad" asp-items="(SelectList)ViewBag.Especialidades" class="form-select">
+            <option value="">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="Especialidad" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Fecha" class="form-label"></label>
+        <input asp-for="Fecha" class="form-control" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+    <div class="form-check mb-3">
+        <input asp-for="PrimeraVez" class="form-check-input" />
+        <label asp-for="PrimeraVez" class="form-check-label"></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Reservar</button>
+    <a asp-action="Index" class="btn btn-link">Volver al listado</a>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
