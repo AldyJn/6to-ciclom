@@ -1,0 +1,62 @@
+<UserControl x:Class="lab4.Views.ProductosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,16,0">
+            <StackPanel>
+                <TextBlock Text="Código" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtId" IsReadOnly="True" Background="#EEE"/>
+                <TextBlock Text="Nombre del producto" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtNombre" MaxLength="60"/>
+                <TextBlock Text="Proveedor" Style="{StaticResource Etiqueta}"/>
+                <ComboBox x:Name="cboProveedor"/>
+                <TextBlock Text="Categoría" Style="{StaticResource Etiqueta}"/>
+                <ComboBox x:Name="cboCategoria"/>
+                <TextBlock Text="Cantidad por unidad" Style="{StaticResource Etiqueta}"/>
+                <TextBox x:Name="txtCantidadUnidad" MaxLength="30"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Precio unitario" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtPrecio"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Existencia" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtExistencia"/>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="En pedido" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtEnPedido"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Nivel de reorden" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtReorden"/>
+                    </StackPanel>
+                </Grid>
+                <CheckBox x:Name="chkDescontinuado" Content="Descontinuado"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Nuevo" Click="Nuevo_Click"/>
+                    <Button Content="Guardar" Click="Guardar_Click"/>
+                    <Button Content="Eliminar" Click="Eliminar_Click" Background="#B3261E"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <DataGrid x:Name="grid" Grid.Column="1" SelectionChanged="Grid_SelectionChanged"
+                  AutoGeneratingColumn="Grid_AutoGeneratingColumn"/>
+    </Grid>
+</UserControl>

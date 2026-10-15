@@ -1,0 +1,92 @@
+<UserControl x:Class="lab4.Views.PedidosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <TabControl Margin="6">
+        <TabItem Header="Mantenimiento de pedidos">
+            <Grid Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,16,0">
+                    <StackPanel>
+                        <TextBlock Text="Código" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtId" IsReadOnly="True" Background="#EEE"/>
+                        <TextBlock Text="Cliente" Style="{StaticResource Etiqueta}"/>
+                        <ComboBox x:Name="cboCliente"/>
+                        <TextBlock Text="Empleado" Style="{StaticResource Etiqueta}"/>
+                        <ComboBox x:Name="cboEmpleado"/>
+                        <TextBlock Text="Transportista" Style="{StaticResource Etiqueta}"/>
+                        <ComboBox x:Name="cboTransportista"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Fecha de pedido" Style="{StaticResource Etiqueta}"/>
+                                <DatePicker x:Name="dpPedido"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Fecha requerida" Style="{StaticResource Etiqueta}"/>
+                                <DatePicker x:Name="dpRequerida"/>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Text="Fecha de envío" Style="{StaticResource Etiqueta}"/>
+                        <DatePicker x:Name="dpEnvio"/>
+                        <TextBlock Text="Destinatario" Style="{StaticResource Etiqueta}"/>
+                        <TextBox x:Name="txtDestinatario" MaxLength="60"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Ciudad destino" Style="{StaticResource Etiqueta}"/>
+                                <TextBox x:Name="txtCiudad" MaxLength="30"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="País destino" Style="{StaticResource Etiqueta}"/>
+                                <TextBox x:Name="txtPais" MaxLength="30"/>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Nuevo" Click="Nuevo_Click"/>
+                            <Button Content="Guardar" Click="Guardar_Click"/>
+                            <Button Content="Eliminar" Click="Eliminar_Click" Background="#B3261E"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+                <DataGrid x:Name="grid" Grid.Column="1" SelectionChanged="Grid_SelectionChanged"
+                          AutoGeneratingColumn="Grid_AutoGeneratingColumn"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Reporte de detalles por fechas">
+            <Grid Margin="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Background="White" BorderBrush="#CCD6E0" BorderThickness="1" Padding="10" Margin="0,0,0,10">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,12,0">
+                            <TextBlock Text="Desde" Style="{StaticResource Etiqueta}"/>
+                            <DatePicker x:Name="dpDesde" Width="150" Margin="0"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,12,0">
+                            <TextBlock Text="Hasta" Style="{StaticResource Etiqueta}"/>
+                            <DatePicker x:Name="dpHasta" Width="150" Margin="0"/>
+                        </StackPanel>
+                        <Button Content="Generar reporte" Click="Reporte_Click" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </Border>
+                <DataGrid x:Name="gridReporte" Grid.Row="1" AutoGeneratingColumn="GridReporte_AutoGeneratingColumn"/>
+                <TextBlock x:Name="lblTotal" Grid.Row="2" Margin="0,10,0,0" FontSize="15" FontWeight="SemiBold"
+                           HorizontalAlignment="Right"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

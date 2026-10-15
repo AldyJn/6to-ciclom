@@ -1,0 +1,18 @@
+<Window x:Class="lab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:lab4.Views"
+        Title="NeptunoDB - Mantenimiento" Height="680" Width="1100"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource Fondo}">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource Primario}" Padding="16,12">
+            <TextBlock Text="NeptunoDB - Mantenimiento" Foreground="White" FontSize="20" FontWeight="SemiBold"/>
+        </Border>
+        <TabControl Margin="10">
+            <TabItem Header="Productos"><v:ProductosView/></TabItem>
+            <TabItem Header="Categorías"><v:CategoriasView/></TabItem>
+            <TabItem Header="Proveedores"><v:ProveedoresView/></TabItem>
+            <TabItem Header="Pedidos"><v:PedidosView/></TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
