@@ -1,0 +1,63 @@
+@model IEnumerable<Habitacion>
+@{
+    ViewData["Title"] = "Habitaciones";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+    <div>
+        <h1 class="titulo">Habitaciones</h1>
+        <p class="subtitulo">Habitaciones activas ordenadas por número</p>
+    </div>
+    <a class="btn btn-acento" asp-action="Create"><i class="bi bi-plus-lg"></i> Nueva habitación</a>
+</div>
+
+<form method="get" class="panel mb-3">
+    <div class="row g-2 align-items-end">
+        <div class="col-sm-6 col-md-4">
+            <label class="form-label" for="idTipo">Tipo de habitación</label>
+            <select id="idTipo" name="idTipo" class="form-select" asp-items="(SelectList)ViewBag.Tipos">
+                <option value="">Todos los tipos</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-dark"><i class="bi bi-funnel"></i> Filtrar</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Limpiar</a>
+        </div>
+    </div>
+</form>
+
+<div class="tabla">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Piso</th>
+                <th>Tipo</th>
+                <th>Capacidad</th>
+                <th class="text-end">Precio por noche</th>
+                <th class="text-end">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="fw-semibold">@item.Numero</td>
+                    <td>@item.Piso</td>
+                    <td>@item.IdTipoHabitacionNavigation.Nombre</td>
+                    <td>@item.IdTipoHabitacionNavigation.Capacidad</td>
+                    <td class="text-end">S/ @item.IdTipoHabitacionNavigation.PrecioNoche.ToString("N2")</td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.IdHabitacion">Detalle</a>
+                        <a class="btn btn-sm btn-outline-primary" asp-action="Edit" asp-route-id="@item.IdHabitacion">Editar</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdHabitacion">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (!Model.Any())
+    {
+        <div class="vacio">No hay habitaciones para mostrar.</div>
+    }
+</div>

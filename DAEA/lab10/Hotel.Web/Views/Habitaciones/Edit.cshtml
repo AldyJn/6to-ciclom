@@ -1,0 +1,18 @@
+@model Habitacion
+@{
+    ViewData["Title"] = "Editar habitación";
+}
+
+<div class="mb-4">
+    <h1 class="titulo">Editar habitación</h1>
+    <p class="subtitulo">Modifica los datos de la habitación @Model.Numero</p>
+</div>
+
+<form asp-action="Edit" method="post" class="panel" style="max-width: 560px">
+    <input type="hidden" asp-for="IdHabitacion" />
+    <partial name="_Formulario" model="Model" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-acento">Guardar cambios</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+    </div>
+</form>

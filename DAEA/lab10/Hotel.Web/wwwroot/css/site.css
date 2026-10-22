@@ -1,0 +1,134 @@
+:root {
+    --ink: #1f2a37;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --accent: #9a6b2f;
+    --accent-dark: #7a5322;
+    --paper: #f7f5f1;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.topbar {
+    background: var(--ink);
+}
+
+.topbar .navbar-brand {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+.topbar .nav-link {
+    color: #cbd5e1;
+    border-radius: .4rem;
+    padding: .45rem .9rem;
+}
+
+.topbar .nav-link:hover {
+    color: #fff;
+}
+
+.topbar .nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, .12);
+}
+
+.topbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, .3);
+    filter: invert(1);
+}
+
+h1.titulo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.subtitulo {
+    color: var(--muted);
+    margin: 0;
+}
+
+.panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: .75rem;
+    padding: 1.25rem;
+}
+
+.tabla {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: .75rem;
+    overflow: hidden;
+}
+
+.tabla table {
+    margin: 0;
+}
+
+.tabla thead th {
+    background: #faf8f4;
+    color: var(--muted);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+
+.tabla td {
+    vertical-align: middle;
+}
+
+.btn-acento {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.btn-acento:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: #fff;
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.estado {
+    display: inline-block;
+    padding: .2rem .65rem;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.estado-Pendiente { background: #fef3c7; color: #92400e; }
+.estado-Confirmada { background: #d1fae5; color: #065f46; }
+.estado-Cancelada { background: #fee2e2; color: #991b1b; }
+.estado-Finalizada { background: #e5e7eb; color: #374151; }
+
+.dato dt {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: .85rem;
+}
+
+.dato dd {
+    margin-bottom: 1rem;
+}
+
+.vacio {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--muted);
+}

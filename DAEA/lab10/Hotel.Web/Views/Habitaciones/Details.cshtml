@@ -1,0 +1,28 @@
+@model Habitacion
+@{
+    ViewData["Title"] = "Detalle de habitación";
+}
+
+<div class="mb-4">
+    <h1 class="titulo">Habitación @Model.Numero</h1>
+    <p class="subtitulo">Detalle de la habitación</p>
+</div>
+
+<div class="panel" style="max-width: 640px">
+    <dl class="dato row mb-0">
+        <dt class="col-sm-4">Número</dt>
+        <dd class="col-sm-8">@Model.Numero</dd>
+        <dt class="col-sm-4">Piso</dt>
+        <dd class="col-sm-8">@Model.Piso</dd>
+        <dt class="col-sm-4">Tipo</dt>
+        <dd class="col-sm-8">@Model.IdTipoHabitacionNavigation.Nombre</dd>
+        <dt class="col-sm-4">Capacidad</dt>
+        <dd class="col-sm-8">@Model.IdTipoHabitacionNavigation.Capacidad persona(s)</dd>
+        <dt class="col-sm-4">Precio por noche</dt>
+        <dd class="col-sm-8">S/ @Model.IdTipoHabitacionNavigation.PrecioNoche.ToString("N2")</dd>
+    </dl>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.IdHabitacion">Editar</a>
+        <a class="btn btn-outline-secondary" asp-action="Index">Volver</a>
+    </div>
+</div>

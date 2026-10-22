@@ -1,0 +1,26 @@
+@model Habitacion
+@{
+    ViewData["Title"] = "Eliminar habitación";
+}
+
+<div class="mb-4">
+    <h1 class="titulo">Eliminar habitación</h1>
+    <p class="subtitulo">La habitación se dará de baja (eliminación lógica) y dejará de listarse</p>
+</div>
+
+<div class="panel" style="max-width: 640px">
+    <div class="alert alert-warning">¿Seguro que deseas dar de baja la habitación <strong>@Model.Numero</strong>?</div>
+    <dl class="dato row mb-0">
+        <dt class="col-sm-4">Número</dt>
+        <dd class="col-sm-8">@Model.Numero</dd>
+        <dt class="col-sm-4">Piso</dt>
+        <dd class="col-sm-8">@Model.Piso</dd>
+        <dt class="col-sm-4">Tipo</dt>
+        <dd class="col-sm-8">@Model.IdTipoHabitacionNavigation.Nombre</dd>
+    </dl>
+    <form asp-action="Delete" method="post" class="d-flex gap-2">
+        <input type="hidden" name="id" value="@Model.IdHabitacion" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+    </form>
+</div>

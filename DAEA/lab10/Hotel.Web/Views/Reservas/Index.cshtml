@@ -1,0 +1,62 @@
+@model IEnumerable<Reserva>
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+    <div>
+        <h1 class="titulo">Reservas</h1>
+        <p class="subtitulo">Listado general de reservas del hotel</p>
+    </div>
+    <a class="btn btn-acento" asp-action="Create"><i class="bi bi-plus-lg"></i> Nueva reserva</a>
+</div>
+
+<div class="tabla">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Huésped</th>
+                    <th>Habitación</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Estado</th>
+                    <th class="text-end">Total</th>
+                    <th>Observaciones</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    var noches = r.FechaSalida.DayNumber - r.FechaIngreso.DayNumber;
+                    var total = noches * r.IdHabitacionNavigation.IdTipoHabitacionNavigation.PrecioNoche;
+                    <tr>
+                        <td class="text-muted">@r.IdReserva</td>
+                        <td>@r.IdHuespedNavigation.Nombres @r.IdHuespedNavigation.Apellidos</td>
+                        <td>@r.IdHabitacionNavigation.Numero <span class="text-muted small">· @r.IdHabitacionNavigation.IdTipoHabitacionNavigation.Nombre</span></td>
+                        <td>@r.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                        <td>@r.FechaSalida.ToString("dd/MM/yyyy")</td>
+                        <td><span class="estado estado-@r.Estado">@r.Estado</span></td>
+                        <td class="text-end">S/ @total.ToString("N2")</td>
+                        <td class="text-muted small">@r.Observaciones</td>
+                        <td class="text-end">
+                            @if (r.Estado == "Pendiente" || r.Estado == "Confirmada")
+                            {
+                                <form asp-action="Cancelar" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@r.IdReserva" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Cancelar</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="vacio">Todavía no hay reservas registradas.</div>
+    }
+</div>
