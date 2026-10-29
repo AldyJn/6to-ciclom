@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Agenda de Eventos</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <a class="brand" asp-controller="Eventos" asp-action="Index">Agenda de Eventos</a>
+            <nav class="menu">
+                <a asp-controller="Eventos" asp-action="Index">Eventos</a>
+                <a asp-controller="Asistentes" asp-action="Index">Asistentes</a>
+                <a asp-controller="Inscripciones" asp-action="Index">Inscripciones</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container page">
+        @if (TempData["Mensaje"] != null)
+        {
+            <div class="aviso">@TempData["Mensaje"]</div>
+        }
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="pie">
+        <div class="container">Agenda de Eventos &middot; Semana 11 &middot; EF Core Code First</div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

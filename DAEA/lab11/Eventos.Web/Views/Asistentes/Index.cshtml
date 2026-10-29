@@ -1,0 +1,35 @@
+@model List<Asistente>
+@{
+    ViewData["Title"] = "Asistentes";
+}
+
+<div class="cabecera">
+    <h1>Asistentes</h1>
+    <a class="btn-principal" asp-action="Create">Nuevo asistente</a>
+</div>
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>DNI</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Nombres</td>
+                <td>@a.Dni</td>
+                <td>@a.Correo</td>
+                <td>@(string.IsNullOrWhiteSpace(a.Telefono) ? "—" : a.Telefono)</td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr><td colspan="4" class="vacio">No hay asistentes registrados.</td></tr>
+        }
+    </tbody>
+</table>

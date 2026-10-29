@@ -1,0 +1,45 @@
+@model List<Inscripcion>
+@{
+    ViewData["Title"] = "Inscripciones";
+}
+
+<div class="cabecera">
+    <h1>Inscripciones</h1>
+    <a class="btn-principal" asp-action="Create">Nueva inscripción</a>
+</div>
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Asistente</th>
+            <th>Fecha de inscripción</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Evento?.Titulo</td>
+                <td>@i.Asistente?.Nombres</td>
+                <td>@i.FechaInscripcion.ToString("dd/MM/yyyy HH:mm")</td>
+                <td><span class="etiqueta @(i.Estado == "Confirmada" ? "ok" : "mal")">@i.Estado</span></td>
+                <td class="text-end">
+                    @if (i.Estado == "Confirmada")
+                    {
+                        <form asp-action="Cancelar" asp-route-id="@i.Id" method="post" class="d-inline"
+                              onsubmit="return confirm('¿Cancelar esta inscripción?');">
+                            <button type="submit" class="btn-sec">Cancelar</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr><td colspan="5" class="vacio">No hay inscripciones registradas.</td></tr>
+        }
+    </tbody>
+</table>

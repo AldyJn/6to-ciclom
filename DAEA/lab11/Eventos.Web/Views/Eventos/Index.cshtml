@@ -1,0 +1,59 @@
+@model List<EventoListaVM>
+@{
+    ViewData["Title"] = "Eventos";
+}
+
+<div class="cabecera">
+    <h1>Eventos</h1>
+    <div class="d-flex gap-3 flex-wrap align-items-center">
+        <form method="get" class="filtro">
+            <select name="categoriaId" class="form-select form-select-sm" asp-items="(SelectList)ViewBag.Categorias">
+                <option value="">Todas las categorías</option>
+            </select>
+            <button type="submit" class="btn-sec">Filtrar</button>
+        </form>
+        <a class="btn-principal" asp-action="Create">Nuevo evento</a>
+    </div>
+</div>
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Categoría</th>
+            <th>Modalidad</th>
+            <th>Precio</th>
+            <th>Aforo</th>
+            <th>Inscritos</th>
+            <th>Cupos</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Titulo</td>
+                <td>@e.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@e.Lugar</td>
+                <td>@e.Categoria</td>
+                <td><span class="etiqueta">@e.Modalidad</span></td>
+                <td>S/ @e.Precio.ToString("N2")</td>
+                <td>@e.Aforo</td>
+                <td>@e.Inscritos</td>
+                <td><span class="etiqueta @(e.Cupos > 0 ? "ok" : "mal")">@e.Cupos</span></td>
+                <td class="enlaces text-nowrap">
+                    <a asp-action="Details" asp-route-id="@e.Id">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@e.Id">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@e.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr><td colspan="10" class="vacio">No hay eventos para mostrar.</td></tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+@model Asistente
+@{
+    ViewData["Title"] = "Nuevo asistente";
+}
+
+<h1>Nuevo asistente</h1>
+
+<form asp-action="Create" class="tarjeta formulario">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="campo">
+        <label asp-for="Nombres"></label>
+        <input asp-for="Nombres" class="form-control" />
+        <span asp-validation-for="Nombres" class="text-danger"></span>
+    </div>
+    <div class="campo">
+        <label asp-for="Dni"></label>
+        <input asp-for="Dni" class="form-control" maxlength="8" />
+        <span asp-validation-for="Dni" class="text-danger"></span>
+    </div>
+    <div class="campo">
+        <label asp-for="Correo"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="campo">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" class="form-control" maxlength="9" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn-principal">Guardar</button>
+    <a class="btn-sec" asp-action="Index">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

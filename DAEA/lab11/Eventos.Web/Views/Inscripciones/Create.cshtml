@@ -1,0 +1,30 @@
+@model Inscripcion
+@{
+    ViewData["Title"] = "Nueva inscripción";
+}
+
+<h1>Nueva inscripción</h1>
+
+<form asp-action="Create" class="tarjeta formulario">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="campo">
+        <label asp-for="EventoId"></label>
+        <select asp-for="EventoId" class="form-select" asp-items="(SelectList)ViewBag.Eventos">
+            <option value="">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="EventoId" class="text-danger"></span>
+    </div>
+    <div class="campo">
+        <label asp-for="AsistenteId"></label>
+        <select asp-for="AsistenteId" class="form-select" asp-items="(SelectList)ViewBag.Asistentes">
+            <option value="">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="AsistenteId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn-principal">Inscribir</button>
+    <a class="btn-sec" asp-action="Index">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,41 @@
+@model Evento
+
+<div class="campo">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" class="form-control" />
+    <span asp-validation-for="Titulo" class="text-danger"></span>
+</div>
+<div class="campo">
+    <label asp-for="Fecha"></label>
+    <input asp-for="Fecha" class="form-control" />
+    <span asp-validation-for="Fecha" class="text-danger"></span>
+</div>
+<div class="campo">
+    <label asp-for="Lugar"></label>
+    <input asp-for="Lugar" class="form-control" />
+    <span asp-validation-for="Lugar" class="text-danger"></span>
+</div>
+<div class="campo">
+    <label asp-for="CategoriaId"></label>
+    <select asp-for="CategoriaId" class="form-select" asp-items="(SelectList)ViewBag.Categorias">
+        <option value="">-- Seleccione --</option>
+    </select>
+    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+</div>
+<div class="campo">
+    <label asp-for="Modalidad"></label>
+    <select asp-for="Modalidad" class="form-select" asp-items="(SelectList)ViewBag.Modalidades"></select>
+    <span asp-validation-for="Modalidad" class="text-danger"></span>
+</div>
+<div class="row">
+    <div class="col-6 campo">
+        <label asp-for="Aforo"></label>
+        <input asp-for="Aforo" class="form-control" />
+        <span asp-validation-for="Aforo" class="text-danger"></span>
+    </div>
+    <div class="col-6 campo">
+        <label asp-for="Precio"></label>
+        <input asp-for="Precio" class="form-control" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+</div>

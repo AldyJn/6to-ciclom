@@ -1,0 +1,32 @@
+@model EventoListaVM
+@{
+    ViewData["Title"] = "Detalle del evento";
+}
+
+<h1>@Model.Titulo</h1>
+
+<div class="tarjeta">
+    <dl class="row detalle mb-0">
+        <dt class="col-sm-3">Fecha</dt>
+        <dd class="col-sm-9">@Model.Fecha.ToString("dd/MM/yyyy HH:mm")</dd>
+        <dt class="col-sm-3">Lugar</dt>
+        <dd class="col-sm-9">@Model.Lugar</dd>
+        <dt class="col-sm-3">Categoría</dt>
+        <dd class="col-sm-9">@Model.Categoria</dd>
+        <dt class="col-sm-3">Modalidad</dt>
+        <dd class="col-sm-9">@Model.Modalidad</dd>
+        <dt class="col-sm-3">Precio</dt>
+        <dd class="col-sm-9">S/ @Model.Precio.ToString("N2")</dd>
+        <dt class="col-sm-3">Aforo</dt>
+        <dd class="col-sm-9">@Model.Aforo</dd>
+        <dt class="col-sm-3">Inscritos confirmados</dt>
+        <dd class="col-sm-9">@Model.Inscritos</dd>
+        <dt class="col-sm-3">Cupos disponibles</dt>
+        <dd class="col-sm-9">@Model.Cupos</dd>
+    </dl>
+</div>
+
+<p class="mt-3 enlaces">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    <a asp-action="Index">Volver a la lista</a>
+</p>
