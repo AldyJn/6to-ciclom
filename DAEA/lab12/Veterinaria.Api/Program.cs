@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Veterinaria.Api.Models;
 
@@ -16,8 +17,16 @@ var origen = builder.Configuration["Cors:Origen"] ?? "http://localhost:3000";
 builder.Services.AddCors(o => o.AddPolicy("Frontend", p =>
     p.WithOrigins(origen).AllowAnyHeader().AllowAnyMethod()));
 
+builder.Services.Configure<ForwardedHeadersOptions>(o =>
+{
+    o.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    o.KnownIPNetworks.Clear();
+    o.KnownProxies.Clear();
+});
+
 var app = builder.Build();
 
+app.UseForwardedHeaders();
 app.MapOpenApi();
 app.UseSwaggerUI(o =>
 {
