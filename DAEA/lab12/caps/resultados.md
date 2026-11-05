@@ -1,7 +1,7 @@
 # Pruebas sobre la API publicada
 
 URL base: https://sixto-ciclom.onrender.com
-Fecha: 2026-11-04 20:22
+Fecha: 2026-11-04 23:20
 
 ## 1. Listar propietarios
 
@@ -45,7 +45,7 @@ Fecha: 2026-11-04 20:22
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-75d1c0c99adc7d24884b7db682dd5068-d0a98664d1c0e002-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-4c860fad0b52ed1eb3edde7494fbd03a-82e88b5ce4f0eeea-00"}
 ```
 
 ## 6. Mascotas de propietario inexistente
@@ -54,7 +54,7 @@ Fecha: 2026-11-04 20:22
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-ad7f268d00b9ab8f11af1203c603981a-48247d5a68a13fdd-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-8da528420086380eded8a9cc45aadf67-8eb3b070c96baab0-00"}
 ```
 
 ## 7. Listar mascotas
@@ -90,23 +90,23 @@ Fecha: 2026-11-04 20:22
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-358eadd2c72ccb6f19f78cb699aa4213-de07540aac71476a-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-f4f23a905a50660c823796da9aed537d-1518291cb32a1244-00"}
 ```
 
 ## 11. Crear propietario
 
 - Peticion: `POST /api/propietarios`
-- Cuerpo: `{"nombre":"Prueba Nube","dni":"93841752","telefono":"900111222","email":"prueba@correo.com"}`
+- Cuerpo: `{"nombre":"Prueba Nube","dni":"93852424","telefono":"900111222","email":"prueba@correo.com"}`
 - Esperado: 201 | Obtenido: **201** | OK
 
 ```json
-{"id":4,"nombre":"Prueba Nube","dni":"93841752","telefono":"900111222","email":"prueba@correo.com"}
+{"id":6,"nombre":"Prueba Nube","dni":"93852424","telefono":"900111222","email":"prueba@correo.com"}
 ```
 
 ## 12. Crear propietario con DNI repetido
 
 - Peticion: `POST /api/propietarios`
-- Cuerpo: `{"nombre":"Otro","dni":"93841752","telefono":"900111222"}`
+- Cuerpo: `{"nombre":"Otro","dni":"93852424","telefono":"900111222"}`
 - Esperado: 409 | Obtenido: **409** | OK
 
 ```json
@@ -120,13 +120,13 @@ Fecha: 2026-11-04 20:22
 - Esperado: 400 | Obtenido: **400** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Dni":["The field Dni must be a string with a minimum length of 8 and a maximum length of 8.","El DNI debe tener 8 digitos"],"Nombre":["The field Nombre must be a string with a minimum length of 3 and a maximum length of 100."],"Telefono":["The field Telefono must be a string with a minimum length of 7 and a maximum length of 15."]},"traceId":"00-0bcb3c0916969b7b53ecd473b3eebb6c-61bbc3fd33555fd8-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Dni":["The field Dni must be a string with a minimum length of 8 and a maximum length of 8.","El DNI debe tener 8 digitos"],"Nombre":["The field Nombre must be a string with a minimum length of 3 and a maximum length of 100."],"Telefono":["The field Telefono must be a string with a minimum length of 7 and a maximum length of 15."]},"traceId":"00-952ba8a52685fb69fc9909bdb91e5e71-2367d83de2302bc9-00"}
 ```
 
 ## 14. Actualizar propietario
 
-- Peticion: `PUT /api/propietarios/4`
-- Cuerpo: `{"id":4,"nombre":"Prueba Nube Editado","dni":"93841752","telefono":"900111222","email":"prueba@correo.com"}`
+- Peticion: `PUT /api/propietarios/6`
+- Cuerpo: `{"id":6,"nombre":"Prueba Nube Editado","dni":"93852424","telefono":"900111222","email":"prueba@correo.com"}`
 - Esperado: 204 | Obtenido: **204** | OK
 
 ```json
@@ -135,8 +135,8 @@ Fecha: 2026-11-04 20:22
 
 ## 15. Actualizar propietario con id distinto en ruta y cuerpo
 
-- Peticion: `PUT /api/propietarios/4`
-- Cuerpo: `{"id":9999,"nombre":"Prueba","dni":"93841752","telefono":"900111222"}`
+- Peticion: `PUT /api/propietarios/6`
+- Cuerpo: `{"id":9999,"nombre":"Prueba","dni":"93852424","telefono":"900111222"}`
 - Esperado: 400 | Obtenido: **400** | OK
 
 ```json
@@ -150,17 +150,17 @@ Fecha: 2026-11-04 20:22
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-02156b124552345d1adcad91bcd1455f-82fcc879fd12cbdc-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-8a0fa259e26288c2daa4cb34152f5bad-f2199419be93467b-00"}
 ```
 
 ## 17. Crear mascota
 
 - Peticion: `POST /api/mascotas`
-- Cuerpo: `{"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":10.5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Cuerpo: `{"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":10.5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 201 | Obtenido: **201** | OK
 
 ```json
-{"id":5,"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":10.5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4,"propietario":null}
+{"id":7,"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":10.5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6,"propietario":null}
 ```
 
 ## 18. Crear mascota con propietario inexistente
@@ -176,7 +176,7 @@ Fecha: 2026-11-04 20:22
 ## 19. Crear mascota con nombre repetido para el mismo propietario
 
 - Peticion: `POST /api/mascotas`
-- Cuerpo: `{"nombre":"Toby","especie":"Perro","pesoKg":8,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Cuerpo: `{"nombre":"Toby","especie":"Perro","pesoKg":8,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 409 | Obtenido: **409** | OK
 
 ```json
@@ -186,17 +186,17 @@ Fecha: 2026-11-04 20:22
 ## 20. Crear mascota con peso invalido
 
 - Peticion: `POST /api/mascotas`
-- Cuerpo: `{"nombre":"Pesado","especie":"Perro","pesoKg":-5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Cuerpo: `{"nombre":"Pesado","especie":"Perro","pesoKg":-5,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 400 | Obtenido: **400** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"PesoKg":["The field PesoKg must be between 0.01 and 200."]},"traceId":"00-17f53e6fcdbe9bf121f36852261a5696-cd3ef5dc73516875-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"PesoKg":["The field PesoKg must be between 0.01 and 200."]},"traceId":"00-15229eacadaf65f1f86f92f9a0e59ee9-cec9f5396a84d309-00"}
 ```
 
 ## 21. Actualizar mascota
 
-- Peticion: `PUT /api/mascotas/5`
-- Cuerpo: `{"id":5,"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":11.2,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Peticion: `PUT /api/mascotas/7`
+- Cuerpo: `{"id":7,"nombre":"Toby","especie":"Perro","raza":"Beagle","pesoKg":11.2,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 204 | Obtenido: **204** | OK
 
 ```json
@@ -205,8 +205,8 @@ Fecha: 2026-11-04 20:22
 
 ## 22. Actualizar mascota con id distinto en ruta y cuerpo
 
-- Peticion: `PUT /api/mascotas/5`
-- Cuerpo: `{"id":9999,"nombre":"Toby","especie":"Perro","pesoKg":11,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Peticion: `PUT /api/mascotas/7`
+- Cuerpo: `{"id":9999,"nombre":"Toby","especie":"Perro","pesoKg":11,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 400 | Obtenido: **400** | OK
 
 ```json
@@ -216,16 +216,16 @@ Fecha: 2026-11-04 20:22
 ## 23. Actualizar mascota inexistente
 
 - Peticion: `PUT /api/mascotas/9999`
-- Cuerpo: `{"id":9999,"nombre":"Toby","especie":"Perro","pesoKg":11,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":4}`
+- Cuerpo: `{"id":9999,"nombre":"Toby","especie":"Perro","pesoKg":11,"fechaNacimiento":"2022-01-10","activa":true,"propietarioId":6}`
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-8cf80d5773124a054e21619f61e6b8c1-8c0767355d360b20-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-0b6531445ed6461304d231f5783c7e84-f8b8f130c8ff6f2b-00"}
 ```
 
 ## 24. Eliminar propietario que tiene mascotas
 
-- Peticion: `DELETE /api/propietarios/4`
+- Peticion: `DELETE /api/propietarios/6`
 - Esperado: 409 | Obtenido: **409** | OK
 
 ```json
@@ -234,7 +234,7 @@ Fecha: 2026-11-04 20:22
 
 ## 25. Eliminar mascota
 
-- Peticion: `DELETE /api/mascotas/5`
+- Peticion: `DELETE /api/mascotas/7`
 - Esperado: 204 | Obtenido: **204** | OK
 
 ```json
@@ -243,16 +243,16 @@ Fecha: 2026-11-04 20:22
 
 ## 26. Eliminar mascota ya eliminada
 
-- Peticion: `DELETE /api/mascotas/5`
+- Peticion: `DELETE /api/mascotas/7`
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-2708ffa5c300e237984a133e8f19524f-390dc313b69e811c-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-badadeb5fd90ab82fe49031ba22072f3-0a21919f1e99cf0a-00"}
 ```
 
 ## 27. Eliminar propietario sin mascotas
 
-- Peticion: `DELETE /api/propietarios/4`
+- Peticion: `DELETE /api/propietarios/6`
 - Esperado: 204 | Obtenido: **204** | OK
 
 ```json
@@ -261,10 +261,10 @@ Fecha: 2026-11-04 20:22
 
 ## 28. Eliminar propietario ya eliminado
 
-- Peticion: `DELETE /api/propietarios/4`
+- Peticion: `DELETE /api/propietarios/6`
 - Esperado: 404 | Obtenido: **404** | OK
 
 ```json
-{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-27b362d4a9b5147b5950a1b561d6d399-95ed5edefbc50afd-00"}
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-40bc48c79be68ec53c31a1ff0949768c-802abdbf43af559b-00"}
 ```
 
