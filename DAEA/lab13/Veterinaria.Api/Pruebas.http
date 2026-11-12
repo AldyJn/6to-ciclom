@@ -1,0 +1,111 @@
+@host = http://localhost:5137
+
+GET {{host}}/api/propietarios
+
+###
+GET {{host}}/api/propietarios?nombre=lucia
+
+###
+GET {{host}}/api/propietarios/1
+
+###
+GET {{host}}/api/propietarios/1/mascotas
+
+###
+GET {{host}}/api/propietarios/99
+
+###
+POST {{host}}/api/propietarios
+Content-Type: application/json
+
+{ "nombre": "Pedro Rojas", "documento": "12345678", "telefono": "999111222", "email": "pedro@mail.com" }
+
+###
+POST {{host}}/api/propietarios
+Content-Type: application/json
+
+{ "nombre": "", "documento": "1" }
+
+###
+POST {{host}}/api/propietarios
+Content-Type: application/json
+
+{ "nombre": "Otro Cliente", "documento": "45871236" }
+
+###
+PUT {{host}}/api/propietarios/4
+Content-Type: application/json
+
+{ "nombre": "Ana Flores Diaz", "documento": "73659841", "telefono": "934567812", "email": "ana.flores@mail.com" }
+
+###
+PUT {{host}}/api/propietarios/99
+Content-Type: application/json
+
+{ "nombre": "Nadie Existe", "documento": "11112222" }
+
+###
+DELETE {{host}}/api/propietarios/1
+
+###
+DELETE {{host}}/api/propietarios/99
+
+###
+GET {{host}}/api/mascotas
+
+###
+GET {{host}}/api/mascotas?especie=Perro&activa=true
+
+###
+GET {{host}}/api/mascotas/1
+
+###
+GET {{host}}/api/mascotas/99
+
+###
+POST {{host}}/api/mascotas
+Content-Type: application/json
+
+{ "nombre": "Max", "especie": "Perro", "raza": "Pastor", "peso": 30, "microchip": "MC-0100", "propietarioId": 4 }
+
+###
+POST {{host}}/api/mascotas
+Content-Type: application/json
+
+{ "nombre": "Max", "especie": "Perro", "peso": 0, "propietarioId": 4 }
+
+###
+POST {{host}}/api/mascotas
+Content-Type: application/json
+
+{ "nombre": "Max", "especie": "Perro", "peso": 5, "microchip": "MC-0001", "propietarioId": 4 }
+
+###
+POST {{host}}/api/mascotas
+Content-Type: application/json
+
+{ "nombre": "Max", "especie": "Perro", "peso": 5, "propietarioId": 99 }
+
+###
+PUT {{host}}/api/mascotas/5
+Content-Type: application/json
+
+{ "nombre": "Kiwi", "especie": "Ave", "raza": "Canario", "peso": 0.04, "activa": true }
+
+###
+PUT {{host}}/api/mascotas/5
+Content-Type: application/json
+
+{ "nombre": "Kiwi", "especie": "Ave", "peso": 0.04, "microchip": "MC-0001", "activa": true }
+
+###
+PUT {{host}}/api/mascotas/99
+Content-Type: application/json
+
+{ "nombre": "Nadie", "especie": "Perro", "peso": 5, "activa": true }
+
+###
+DELETE {{host}}/api/mascotas/6
+
+###
+DELETE {{host}}/api/mascotas/99
