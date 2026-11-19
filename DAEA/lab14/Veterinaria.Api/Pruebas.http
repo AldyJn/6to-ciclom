@@ -1,0 +1,125 @@
+@host = http://localhost:5137
+
+###
+POST {{host}}/api/auth/registro
+Content-Type: application/json
+
+{ "correo": "nuevo@veterinaria.pe", "clave": "Clave123!" }
+
+###
+POST {{host}}/api/auth/registro
+Content-Type: application/json
+
+{ "correo": "recepcion@veterinaria.pe", "clave": "Clave123!" }
+
+###
+# @name loginRecepcion
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "recepcion@veterinaria.pe", "clave": "Clave123!" }
+
+###
+# @name loginVeterinario
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "veterinario@veterinaria.pe", "clave": "Clave123!" }
+
+###
+# @name loginAsistente
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "asistente@veterinaria.pe", "clave": "Clave123!" }
+
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "correo": "recepcion@veterinaria.pe", "clave": "ClaveMala1" }
+
+###
+@tokenR = {{loginRecepcion.response.body.$.token}}
+@tokenV = {{loginVeterinario.response.body.$.token}}
+@tokenA = {{loginAsistente.response.body.$.token}}
+
+###
+GET {{host}}/api/auth/perfil
+Authorization: Bearer {{tokenV}}
+
+###
+GET {{host}}/api/auth/perfil
+
+###
+GET {{host}}/api/propietarios
+Authorization: Bearer {{tokenA}}
+
+###
+GET {{host}}/api/propietarios/1/mascotas
+Authorization: Bearer {{tokenR}}
+
+###
+POST {{host}}/api/propietarios
+Authorization: Bearer {{tokenR}}
+Content-Type: application/json
+
+{ "nombre": "Pedro Rojas", "documento": "12345678", "telefono": "999111222", "email": "pedro@mail.com" }
+
+###
+POST {{host}}/api/propietarios
+Authorization: Bearer {{tokenV}}
+Content-Type: application/json
+
+{ "nombre": "Otro Cliente", "documento": "87654321" }
+
+###
+POST {{host}}/api/propietarios
+Authorization: Bearer {{tokenR}}
+Content-Type: application/json
+
+{ "nombre": "Otro Cliente", "documento": "45871236" }
+
+###
+PUT {{host}}/api/propietarios/4
+Authorization: Bearer {{tokenR}}
+Content-Type: application/json
+
+{ "nombre": "Ana Flores Diaz", "documento": "73659841", "telefono": "934567812", "email": "ana.flores@mail.com" }
+
+###
+DELETE {{host}}/api/propietarios/5
+Authorization: Bearer {{tokenR}}
+
+###
+GET {{host}}/api/mascotas
+Authorization: Bearer {{tokenV}}
+
+###
+GET {{host}}/api/mascotas/9999
+Authorization: Bearer {{tokenV}}
+
+###
+POST {{host}}/api/mascotas
+Authorization: Bearer {{tokenR}}
+Content-Type: application/json
+
+{ "nombre": "Max", "especie": "Perro", "raza": "Pastor", "peso": 30, "microchip": "MC-0100", "propietarioId": 4 }
+
+###
+PUT {{host}}/api/mascotas/5
+Authorization: Bearer {{tokenV}}
+Content-Type: application/json
+
+{ "nombre": "Kiwi", "especie": "Ave", "raza": "Canario", "peso": 0.04, "activa": true }
+
+###
+PUT {{host}}/api/mascotas/5
+Authorization: Bearer {{tokenR}}
+Content-Type: application/json
+
+{ "nombre": "Kiwi", "especie": "Ave", "peso": 0.04, "activa": true }
+
+###
+DELETE {{host}}/api/mascotas/6
+Authorization: Bearer {{tokenV}}
